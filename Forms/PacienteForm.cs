@@ -57,8 +57,14 @@ namespace Desafio1App.Forms
         {
 
         }
+        
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

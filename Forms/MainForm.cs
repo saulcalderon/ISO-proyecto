@@ -21,41 +21,83 @@ namespace Desafio1App.Forms
             this.SuspendLayout();
 
             // Propiedades del formulario
-            this.Text = "Menú Principal";
-            this.Size = new Size(400, 400);
+            this.Text = "SCS V1.0 - Menú Principal";
+            this.Size = new Size(600, 500);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.FromArgb(245, 240, 255); // Fondo pastel suave
+            this.BackColor = Color.FromArgb(240, 244, 248);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
+            // Título principal
+            Label lblTitulo = new Label();
+            lblTitulo.Text = "Sistema de Clasificación de Sangre";
+            lblTitulo.Font = new Font("Segoe UI", 16, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(0, 102, 204);
+            lblTitulo.AutoSize = true;
+            lblTitulo.Location = new Point(110, 30);
+            this.Controls.Add(lblTitulo);
+
+            // Subtítulo
+            Label lblSubtitulo = new Label();
+            lblSubtitulo.Text = "Seleccione una opción";
+            lblSubtitulo.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+            lblSubtitulo.ForeColor = Color.FromArgb(100, 100, 100);
+            lblSubtitulo.AutoSize = true;
+            lblSubtitulo.Location = new Point(215, 70);
+            this.Controls.Add(lblSubtitulo);
+
+            // Panel contenedor
+            Panel panelBotones = new Panel();
+            panelBotones.BackColor = Color.White;
+            panelBotones.BorderStyle = BorderStyle.FixedSingle;
+            panelBotones.Size = new Size(450, 300);
+            panelBotones.Location = new Point(75, 110);
+            this.Controls.Add(panelBotones);
+
             // Botón Agregar Paciente
             btnAgregarPaciente = new Button();
-            btnAgregarPaciente.Text = "Agregar paciente";
-            btnAgregarPaciente.Size = new Size(150, 40);
-            btnAgregarPaciente.Location = new Point(120, 30);
-            btnAgregarPaciente.BackColor = Color.FromArgb(220, 235, 255);
+            btnAgregarPaciente.Text = "➕ Agregar Paciente";
+            btnAgregarPaciente.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnAgregarPaciente.Size = new Size(350, 60);
+            btnAgregarPaciente.Location = new Point(50, 30);
+            btnAgregarPaciente.BackColor = Color.FromArgb(40, 167, 69);
+            btnAgregarPaciente.ForeColor = Color.White;
+            btnAgregarPaciente.FlatStyle = FlatStyle.Flat;
+            btnAgregarPaciente.FlatAppearance.BorderSize = 0;
+            btnAgregarPaciente.Cursor = Cursors.Hand;
             btnAgregarPaciente.Click += BtnAgregarPaciente_Click;
-            this.Controls.Add(btnAgregarPaciente);
+            panelBotones.Controls.Add(btnAgregarPaciente);
 
             // Botón Ver Árbol
             btnVerArbol = new Button();
-            btnVerArbol.Text = "Ver árbol";
-            btnVerArbol.Size = new Size(150, 40);
-            btnVerArbol.Location = new Point(120, 90);
-            btnVerArbol.BackColor = Color.FromArgb(220, 255, 240);
+            btnVerArbol.Text = "🌳 Ver Clasificación de Pacientes";
+            btnVerArbol.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnVerArbol.Size = new Size(350, 60);
+            btnVerArbol.Location = new Point(50, 110);
+            btnVerArbol.BackColor = Color.FromArgb(0, 123, 255);
+            btnVerArbol.ForeColor = Color.White;
+            btnVerArbol.FlatStyle = FlatStyle.Flat;
+            btnVerArbol.FlatAppearance.BorderSize = 0;
+            btnVerArbol.Cursor = Cursors.Hand;
             btnVerArbol.Click += BtnVerArbol_Click;
-            this.Controls.Add(btnVerArbol);
-
-            this.ResumeLayout(false);
+            panelBotones.Controls.Add(btnVerArbol);
 
             // Botón Cerrar sesión
             Button btnCerrarSesion = new Button();
-            btnCerrarSesion.Text = "Cerrar sesión";
-            btnCerrarSesion.Size = new Size(150, 40);
-            btnCerrarSesion.Location = new Point(120, 150);
-            btnCerrarSesion.BackColor = Color.FromArgb(255, 220, 220);
+            btnCerrarSesion.Text = "🚪 Cerrar Sesión";
+            btnCerrarSesion.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnCerrarSesion.Size = new Size(350, 60);
+            btnCerrarSesion.Location = new Point(50, 190);
+            btnCerrarSesion.BackColor = Color.FromArgb(220, 53, 69);
+            btnCerrarSesion.ForeColor = Color.White;
+            btnCerrarSesion.FlatStyle = FlatStyle.Flat;
+            btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            btnCerrarSesion.Cursor = Cursors.Hand;
             btnCerrarSesion.Click += BtnCerrarSesion_Click;
-            this.Controls.Add(btnCerrarSesion);
+            panelBotones.Controls.Add(btnCerrarSesion);
+
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
