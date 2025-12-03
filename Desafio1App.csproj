@@ -69,7 +69,14 @@
     <Compile Include="Forms\TreeViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\GestionPacientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EstadisticasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modelos\Paciente.cs" />
+    <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\LoginForm.resx">
