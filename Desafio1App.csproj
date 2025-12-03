@@ -77,8 +77,18 @@
     </Compile>
     <Compile Include="Modelos\Paciente.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Data\ConexionDB.cs" />
+    <Compile Include="Data\PacienteRepository.cs" />
+    <Compile Include="Data\UsuarioRepository.cs" />
+    <Compile Include="Utils\EncriptacionHelper.cs" />
+    <Compile Include="Forms\GestionUsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\GestionPacientesForm.resx">
+      <DependentUpon>GestionPacientesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -34,8 +34,7 @@ namespace Desafio1App.Forms
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.\n\nUsuarios disponibles:\n• admin / admin123 (Administrador)\n• medico / medico123 (Personal de Salud)\n• enfermera / enf123 (Personal de Salud)", 
-                    "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos.", "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtContraseña.Clear();
                 txtContraseña.Focus();
             }

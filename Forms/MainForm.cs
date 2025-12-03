@@ -65,14 +65,21 @@ namespace Desafio1App.Forms
             this.Controls.Add(lblSubtitulo);
 
             // Panel contenedor
+            int panelHeight = usuarioActual?.EsAdministrador == true ? 495 : 420;
             Panel panelBotones = new Panel
             {
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
-                Size = new Size(450, 420),
+                Size = new Size(450, panelHeight),
                 Location = new Point(75, 115)
             };
             this.Controls.Add(panelBotones);
+
+            // Ajustar tamaño del formulario si es admin
+            if (usuarioActual?.EsAdministrador == true)
+            {
+                this.Size = new Size(600, 695);
+            }
 
             int btnY = 25;
             int btnSpacing = 75;
@@ -112,6 +119,18 @@ namespace Desafio1App.Forms
                 form.ShowDialog();
             };
             panelBotones.Controls.Add(btnEstadisticas);
+
+            // Botón Gestión de Usuarios (solo Administrador)
+            if (usuarioActual?.EsAdministrador == true)
+            {
+                btnY += btnSpacing;
+                Button btnGestionUsuarios = CrearBoton("👥 Gestión de Usuarios", new Point(50, btnY), Color.FromArgb(255, 152, 0));
+                btnGestionUsuarios.Click += (s, e) => {
+                    GestionUsuariosForm form = new GestionUsuariosForm();
+                    form.ShowDialog();
+                };
+                panelBotones.Controls.Add(btnGestionUsuarios);
+            }
 
             // Botón Cerrar sesión
             btnY += btnSpacing;

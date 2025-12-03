@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Desafio1App.Forms;
+using Desafio1App.Data;
 
 namespace Desafio1App
 {
@@ -11,8 +12,11 @@ namespace Desafio1App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm()); // Inicia la app en el login
-
+            
+            // Validar conexión a base de datos antes de iniciar
+            ConexionDB.ValidarConexion();
+            
+            Application.Run(new LoginForm());
         }
     }
 }
