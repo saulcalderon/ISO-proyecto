@@ -1,44 +1,46 @@
-﻿// Forms/LoginForm.cs
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Desafio1App.Modelos;
 
 namespace Desafio1App.Forms
 {
     public partial class LoginForm : Form
     {
-        // Constructor del formulario
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        // Evento de clic del botón Ingresar
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
             string contraseña = txtContraseña.Text.Trim();
 
-            // Validación con datos predefinidos
-            if (usuario == "desafio" && contraseña == "2025")
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contraseña))
             {
-                // Si son válidos, se abre el MainForm
-                MainForm main = new MainForm();
-                this.Hide(); // Oculta el Login
+                MessageBox.Show("Por favor ingrese usuario y contraseña.", "Campos requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Usuario usuarioValidado = GestorUsuarios.ValidarCredenciales(usuario, contraseña);
+
+            if (usuarioValidado != null)
+            {
+                MainForm main = new MainForm(usuarioValidado);
+                this.Hide();
                 main.ShowDialog();
-                this.Close(); // Cierra el formulario al volver
+                this.Close();
             }
             else
             {
-                // Si no coinciden, muestra error
-                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos.\n\nUsuarios disponibles:\n• admin / admin123 (Administrador)\n• medico / medico123 (Personal de Salud)\n• enfermera / enf123 (Personal de Salud)", 
+                    "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtContraseña.Clear();
+                txtContraseña.Focus();
             }
         }
 
-        private void lblContraseña_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void lblContraseña_Click(object sender, EventArgs e) { }
     }
 }
-
