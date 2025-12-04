@@ -43,6 +43,9 @@ namespace Desafio1App.Forms
             cmbGenero.SelectedItem = pacienteEdicion.Genero;
             cmbTipoSangre.SelectedItem = pacienteEdicion.TipoSangre;
             cmbPresion.SelectedItem = pacienteEdicion.PresionArterial;
+            txtTelefono.Text = pacienteEdicion.Telefono ?? "";
+            txtEmail.Text = pacienteEdicion.Email ?? "";
+            txtDireccion.Text = pacienteEdicion.Direccion ?? "";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -63,6 +66,9 @@ namespace Desafio1App.Forms
                 pacienteEdicion.Genero = cmbGenero.SelectedItem.ToString();
                 pacienteEdicion.TipoSangre = cmbTipoSangre.SelectedItem.ToString();
                 pacienteEdicion.PresionArterial = cmbPresion.SelectedItem.ToString();
+                pacienteEdicion.Telefono = txtTelefono.Text.Trim();
+                pacienteEdicion.Email = txtEmail.Text.Trim();
+                pacienteEdicion.Direccion = txtDireccion.Text.Trim();
 
                 arbolReferencia.EditarPaciente(pacienteEdicion);
                 MessageBox.Show("Paciente actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -75,7 +81,10 @@ namespace Desafio1App.Forms
                     (int)nudEdad.Value,
                     cmbGenero.SelectedItem.ToString(),
                     cmbTipoSangre.SelectedItem.ToString(),
-                    cmbPresion.SelectedItem.ToString()
+                    cmbPresion.SelectedItem.ToString(),
+                    txtTelefono.Text.Trim(),
+                    txtEmail.Text.Trim(),
+                    txtDireccion.Text.Trim()
                 );
 
                 arbolReferencia.InsertarPaciente(nuevo);

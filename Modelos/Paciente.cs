@@ -13,8 +13,14 @@ namespace Desafio1App.Modelos
         public string TipoSangre { get; set; }
         public string PresionArterial { get; set; }
         public DateTime FechaRegistro { get; set; }
+        
+        // Datos de contacto
+        public string Telefono { get; set; }
+        public string Email { get; set; }
+        public string Direccion { get; set; }
 
-        public Paciente(string nombre, int edad, string genero, string tipoSangre, string presionArterial)
+        public Paciente(string nombre, int edad, string genero, string tipoSangre, string presionArterial,
+            string telefono = "", string email = "", string direccion = "")
         {
             Id = contadorId++;
             Nombre = nombre;
@@ -22,10 +28,18 @@ namespace Desafio1App.Modelos
             Genero = genero;
             TipoSangre = tipoSangre;
             PresionArterial = presionArterial;
+            Telefono = telefono ?? "";
+            Email = email ?? "";
+            Direccion = direccion ?? "";
             FechaRegistro = DateTime.Now;
         }
 
-        public Paciente() { }
+        public Paciente() 
+        {
+            Telefono = "";
+            Email = "";
+            Direccion = "";
+        }
 
         public Paciente Clonar()
         {
@@ -37,7 +51,10 @@ namespace Desafio1App.Modelos
                 Genero = this.Genero,
                 TipoSangre = this.TipoSangre,
                 PresionArterial = this.PresionArterial,
-                FechaRegistro = this.FechaRegistro
+                FechaRegistro = this.FechaRegistro,
+                Telefono = this.Telefono,
+                Email = this.Email,
+                Direccion = this.Direccion
             };
         }
 
@@ -47,5 +64,7 @@ namespace Desafio1App.Modelos
         }
 
         public string DescripcionCorta => $"{Nombre} ({Edad} años)";
+        
+        public string InfoContacto => !string.IsNullOrEmpty(Telefono) ? $"Tel: {Telefono}" : "Sin teléfono";
     }
 }

@@ -43,8 +43,16 @@
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.lblInstrucciones = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.grpContacto = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).BeginInit();
             this.panelFormulario.SuspendLayout();
+            this.grpContacto.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -221,6 +229,82 @@
             this.cmbPresion.Size = new System.Drawing.Size(200, 31);
             this.cmbPresion.TabIndex = 9;
             // 
+            // grpContacto
+            // 
+            this.grpContacto.BackColor = System.Drawing.Color.White;
+            this.grpContacto.Controls.Add(this.lblTelefono);
+            this.grpContacto.Controls.Add(this.txtTelefono);
+            this.grpContacto.Controls.Add(this.lblEmail);
+            this.grpContacto.Controls.Add(this.txtEmail);
+            this.grpContacto.Controls.Add(this.lblDireccion);
+            this.grpContacto.Controls.Add(this.txtDireccion);
+            this.grpContacto.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpContacto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.grpContacto.Location = new System.Drawing.Point(75, 480);
+            this.grpContacto.Name = "grpContacto";
+            this.grpContacto.Size = new System.Drawing.Size(500, 180);
+            this.grpContacto.TabIndex = 15;
+            this.grpContacto.TabStop = false;
+            this.grpContacto.Text = "  Datos de Contacto (Opcional)  ";
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblTelefono.Location = new System.Drawing.Point(20, 30);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(78, 23);
+            this.lblTelefono.TabIndex = 0;
+            this.lblTelefono.Text = "Teléfono:";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefono.Location = new System.Drawing.Point(20, 55);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(200, 30);
+            this.txtTelefono.TabIndex = 1;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblEmail.Location = new System.Drawing.Point(250, 30);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(54, 23);
+            this.lblEmail.TabIndex = 2;
+            this.lblEmail.Text = "Email:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(250, 55);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(230, 30);
+            this.txtEmail.TabIndex = 3;
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblDireccion.Location = new System.Drawing.Point(20, 100);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(82, 23);
+            this.lblDireccion.TabIndex = 4;
+            this.lblDireccion.Text = "Dirección:";
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(20, 125);
+            this.txtDireccion.Multiline = true;
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(460, 45);
+            this.txtDireccion.TabIndex = 5;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
@@ -228,7 +312,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(150, 490);
+            this.btnGuardar.Location = new System.Drawing.Point(150, 680);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(200, 50);
             this.btnGuardar.TabIndex = 10;
@@ -244,7 +328,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(370, 490);
+            this.btnCancelar.Location = new System.Drawing.Point(370, 680);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(140, 50);
             this.btnCancelar.TabIndex = 11;
@@ -258,9 +342,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(244)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(650, 570);
+            this.ClientSize = new System.Drawing.Size(650, 760);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.grpContacto);
             this.Controls.Add(this.panelFormulario);
             this.Controls.Add(this.lblInstrucciones);
             this.Controls.Add(this.lblTitulo);
@@ -272,6 +357,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudEdad)).EndInit();
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
+            this.grpContacto.ResumeLayout(false);
+            this.grpContacto.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +381,12 @@
         private System.Windows.Forms.Panel panelFormulario;
         private System.Windows.Forms.Label lblInstrucciones;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.GroupBox grpContacto;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblDireccion;
+        private System.Windows.Forms.TextBox txtDireccion;
     }
 }

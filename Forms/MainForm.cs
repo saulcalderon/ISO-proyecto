@@ -64,8 +64,8 @@ namespace Desafio1App.Forms
             };
             this.Controls.Add(lblSubtitulo);
 
-            // Panel contenedor
-            int panelHeight = usuarioActual?.EsAdministrador == true ? 495 : 420;
+            // Panel contenedor - ahora incluye Citas e Informes
+            int panelHeight = usuarioActual?.EsAdministrador == true ? 645 : 570;
             Panel panelBotones = new Panel
             {
                 BackColor = Color.White,
@@ -75,10 +75,14 @@ namespace Desafio1App.Forms
             };
             this.Controls.Add(panelBotones);
 
-            // Ajustar tamaño del formulario si es admin
+            // Ajustar tamaño del formulario
             if (usuarioActual?.EsAdministrador == true)
             {
-                this.Size = new Size(600, 695);
+                this.Size = new Size(600, 845);
+            }
+            else
+            {
+                this.Size = new Size(600, 770);
             }
 
             int btnY = 25;
@@ -119,6 +123,25 @@ namespace Desafio1App.Forms
                 form.ShowDialog();
             };
             panelBotones.Controls.Add(btnEstadisticas);
+
+            // Botón Gestión de Citas
+            btnY += btnSpacing;
+            Button btnGestionCitas = CrearBoton("📅 Gestión de Citas", new Point(50, btnY), Color.FromArgb(255, 87, 34));
+            btnGestionCitas.Click += (s, e) => {
+                bool esAdmin = usuarioActual?.EsAdministrador ?? false;
+                GestionCitasForm form = new GestionCitasForm(esAdmin);
+                form.ShowDialog();
+            };
+            panelBotones.Controls.Add(btnGestionCitas);
+
+            // Botón Generar Informes
+            btnY += btnSpacing;
+            Button btnInformes = CrearBoton("📄 Generar Informes", new Point(50, btnY), Color.FromArgb(0, 150, 136));
+            btnInformes.Click += (s, e) => {
+                InformesForm form = new InformesForm();
+                form.ShowDialog();
+            };
+            panelBotones.Controls.Add(btnInformes);
 
             // Botón Gestión de Usuarios (solo Administrador)
             if (usuarioActual?.EsAdministrador == true)

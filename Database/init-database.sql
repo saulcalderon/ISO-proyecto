@@ -18,14 +18,32 @@ CREATE TABLE Pacientes (
     Genero NVARCHAR(20) NOT NULL,
     TipoSangre NVARCHAR(5) NOT NULL,
     PresionArterial NVARCHAR(20) NOT NULL,
+    Telefono NVARCHAR(20) NULL,
+    Email NVARCHAR(100) NULL,
+    Direccion NVARCHAR(200) NULL,
     FechaRegistro DATETIME DEFAULT GETDATE(),
     Activo BIT DEFAULT 1
+);
+
+-- Tabla de Citas
+CREATE TABLE Citas (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    PacienteId INT NOT NULL,
+    FechaHora DATETIME NOT NULL,
+    Motivo NVARCHAR(200) NOT NULL,
+    Estado INT NOT NULL DEFAULT 0, -- 0: Pendiente, 1: Confirmada, 2: Completada, 3: Cancelada
+    Observaciones NVARCHAR(500) NULL,
+    FechaCreacion DATETIME DEFAULT GETDATE(),
+    CONSTRAINT FK_Citas_Pacientes FOREIGN KEY (PacienteId) REFERENCES Pacientes(Id)
 );
 
 -- Índices para búsquedas
 CREATE INDEX IX_Pacientes_Genero ON Pacientes(Genero);
 CREATE INDEX IX_Pacientes_TipoSangre ON Pacientes(TipoSangre);
 CREATE INDEX IX_Pacientes_PresionArterial ON Pacientes(PresionArterial);
+CREATE INDEX IX_Citas_PacienteId ON Citas(PacienteId);
+CREATE INDEX IX_Citas_FechaHora ON Citas(FechaHora);
+CREATE INDEX IX_Citas_Estado ON Citas(Estado);
 
 -- Insertar usuarios por defecto
 -- admin: admin123
@@ -37,9 +55,15 @@ INSERT INTO Usuarios (NombreUsuario, Contrasena, NombreCompleto, Rol) VALUES
 ('enfermera', '5355f2cc3fde92dad92ea6470dca32fab53351d8d243cc7467334e56b9c1a381', 'María García', 1);
 
 -- Insertar algunos pacientes de prueba
-INSERT INTO Pacientes (Nombre, Edad, Genero, TipoSangre, PresionArterial) VALUES
-('Carlos Martínez', 35, 'Masculino', 'O+', 'Normal'),
-('Ana López', 28, 'Femenino', 'A+', 'Baja'),
-('Pedro Hernández', 45, 'Masculino', 'B+', 'Alta'),
-('María Rodríguez', 52, 'Femenino', 'O+', 'Alta'),
-('José García', 31, 'Masculino', 'AB+', 'Normal');
+INSERT INTO Pacientes (Nombre, Edad, Genero, TipoSangre, PresionArterial, Telefono, Email, Direccion) VALUES
+('Carlos Martínez', 35, 'Masculino', 'O+', 'Normal', '7890-1234', 'carlos.martinez@email.com', 'Col. Escalón, San Salvador'),
+('Ana López', 28, 'Femenino', 'A+', 'Baja', '7890-5678', 'ana.lopez@email.com', 'Col. Miramonte, San Salvador'),
+('Pedro Hernández', 45, 'Masculino', 'B+', 'Alta', '7890-9012', 'pedro.hernandez@email.com', 'Santa Tecla, La Libertad'),
+('María Rodríguez', 52, 'Femenino', 'O+', 'Alta', '7890-3456', 'maria.rodriguez@email.com', 'Antiguo Cuscatlán, La Libertad'),
+('José García', 31, 'Masculino', 'AB+', 'Normal', '7890-7890', 'jose.garcia@email.com', 'Soyapango, San Salvador');
+
+-- Insertar algunas citas de prueba
+INSERT INTO Citas (PacienteId, FechaHora, Motivo, Estado, Observaciones) VALUES
+(1, DATEADD(day, 1, GETDATE()), 'Consulta de rutina', 0, 'Primera visita del año'),
+(2, DATEADD(day, 2, GETDATE()), 'Control de presión arterial', 1, 'Seguimiento mensual'),
+(3, DATEADD(day, -1, GETDATE()), 'Examen de sangre', 2, 'Resultados pendientes');

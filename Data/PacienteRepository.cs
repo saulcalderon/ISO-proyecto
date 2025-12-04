@@ -13,7 +13,7 @@ namespace Desafio1App.Data
             using (var conn = ConexionDB.ObtenerConexion())
             {
                 conn.Open();
-                string sql = "SELECT Id, Nombre, Edad, Genero, TipoSangre, PresionArterial, FechaRegistro FROM Pacientes WHERE Activo = 1";
+                string sql = "SELECT Id, Nombre, Edad, Genero, TipoSangre, PresionArterial, FechaRegistro, Telefono, Email, Direccion FROM Pacientes WHERE Activo = 1";
                 using (var cmd = new SqlCommand(sql, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -31,7 +31,7 @@ namespace Desafio1App.Data
             using (var conn = ConexionDB.ObtenerConexion())
             {
                 conn.Open();
-                string sql = "SELECT Id, Nombre, Edad, Genero, TipoSangre, PresionArterial, FechaRegistro FROM Pacientes WHERE Id = @Id AND Activo = 1";
+                string sql = "SELECT Id, Nombre, Edad, Genero, TipoSangre, PresionArterial, FechaRegistro, Telefono, Email, Direccion FROM Pacientes WHERE Id = @Id AND Activo = 1";
                 using (var cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", id);
@@ -50,8 +50,8 @@ namespace Desafio1App.Data
             using (var conn = ConexionDB.ObtenerConexion())
             {
                 conn.Open();
-                string sql = @"INSERT INTO Pacientes (Nombre, Edad, Genero, TipoSangre, PresionArterial) 
-                              VALUES (@Nombre, @Edad, @Genero, @TipoSangre, @PresionArterial);
+                string sql = @"INSERT INTO Pacientes (Nombre, Edad, Genero, TipoSangre, PresionArterial, Telefono, Email, Direccion) 
+                              VALUES (@Nombre, @Edad, @Genero, @TipoSangre, @PresionArterial, @Telefono, @Email, @Direccion);
                               SELECT SCOPE_IDENTITY();";
                 using (var cmd = new SqlCommand(sql, conn))
                 {
@@ -60,6 +60,9 @@ namespace Desafio1App.Data
                     cmd.Parameters.AddWithValue("@Genero", paciente.Genero);
                     cmd.Parameters.AddWithValue("@TipoSangre", paciente.TipoSangre);
                     cmd.Parameters.AddWithValue("@PresionArterial", paciente.PresionArterial);
+                    cmd.Parameters.AddWithValue("@Telefono", (object)paciente.Telefono ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Email", (object)paciente.Email ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Direccion", (object)paciente.Direccion ?? DBNull.Value);
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
@@ -72,7 +75,8 @@ namespace Desafio1App.Data
                 conn.Open();
                 string sql = @"UPDATE Pacientes SET 
                               Nombre = @Nombre, Edad = @Edad, Genero = @Genero, 
-                              TipoSangre = @TipoSangre, PresionArterial = @PresionArterial 
+                              TipoSangre = @TipoSangre, PresionArterial = @PresionArterial,
+                              Telefono = @Telefono, Email = @Email, Direccion = @Direccion 
                               WHERE Id = @Id";
                 using (var cmd = new SqlCommand(sql, conn))
                 {
@@ -82,6 +86,9 @@ namespace Desafio1App.Data
                     cmd.Parameters.AddWithValue("@Genero", paciente.Genero);
                     cmd.Parameters.AddWithValue("@TipoSangre", paciente.TipoSangre);
                     cmd.Parameters.AddWithValue("@PresionArterial", paciente.PresionArterial);
+                    cmd.Parameters.AddWithValue("@Telefono", (object)paciente.Telefono ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Email", (object)paciente.Email ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Direccion", (object)paciente.Direccion ?? DBNull.Value);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -107,7 +114,7 @@ namespace Desafio1App.Data
             using (var conn = ConexionDB.ObtenerConexion())
             {
                 conn.Open();
-                string sql = "SELECT Id, Nombre, Edad, Genero, TipoSangre, PresionArterial, FechaRegistro FROM Pacientes WHERE Activo = 1";
+                string sql = "SELECT Id, Nombre, Edad, Genero, TipoSangre, PresionArterial, FechaRegistro, Telefono, Email, Direccion FROM Pacientes WHERE Activo = 1";
                 
                 if (!string.IsNullOrEmpty(genero) && genero != "Todos")
                     sql += " AND Genero = @Genero";
@@ -197,7 +204,10 @@ namespace Desafio1App.Data
                 Genero = reader.GetString(3),
                 TipoSangre = reader.GetString(4),
                 PresionArterial = reader.GetString(5),
-                FechaRegistro = reader.GetDateTime(6)
+                FechaRegistro = reader.GetDateTime(6),
+                Telefono = reader.IsDBNull(7) ? "" : reader.GetString(7),
+                Email = reader.IsDBNull(8) ? "" : reader.GetString(8),
+                Direccion = reader.IsDBNull(9) ? "" : reader.GetString(9)
             };
         }
     }
